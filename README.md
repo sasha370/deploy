@@ -423,7 +423,7 @@ After=syslog.target network.target
 Type=simple
 Environment=RAILS_ENV=production
 WorkingDirectory=/home/deploy/qna/current
-ExecStart=/home/deploy/.rvm/bin/rvm default do bundle exec sidekiq -e production
+ExecStart=/home/deploy/.rvm/bin/rvm default do bundle exec sidekiq --index 0 --pidfile /home/deploy/qna/shared/tmp/pids/sidekiq-0.pid --environment production
 ExecReload=/bin/kill -TSTP $MAINPID
 ExecStop=/bin/kill -TERM $MAINPID
 
